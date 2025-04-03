@@ -1,4 +1,4 @@
-package com.fiap.hospitalar.agendamento.config.swagger;
+package com.fiap.hospitalar.notificacoes.config.swagger;
 
 
 import io.swagger.v3.oas.models.OpenAPI;

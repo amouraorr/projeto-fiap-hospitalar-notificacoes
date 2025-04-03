@@ -1,4 +1,4 @@
-package com.fiap.hospitalar.agendamento.service;
+package com.fiap.hospitalar.notificacoes.service;
 
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;

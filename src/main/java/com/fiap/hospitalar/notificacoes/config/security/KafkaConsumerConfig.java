@@ -1,4 +1,4 @@
-package com.fiap.hospitalar.agendamento.config.security;
+package com.fiap.hospitalar.notificacoes.config.security;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.springframework.context.annotation.Bean;
