@@ -1,5 +1,8 @@
 package com.fiap.hospitalar.notificacoes.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fiap.hospitalar.notificacoes.dto.request.ConsultationRequestDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,14 +27,23 @@ public class NotificationService {
         // Log da mensagem recebida
         logger.info("Mensagem recebida do tópico 'consultas-agendadas': {}", message);
 
-        System.out.println("Received message: " + message);
+        System.out.println("Mensagem recebida: " + message);
 
+        ObjectMapper objectMapper = new ObjectMapper();
 
-        // Processar a mensagem e enviar notificação
-        sendEmail("patient@example.com", "Consulta Agendada", "Detalhes da consulta: " + message);
+        try {
+            // Tente converter a string JSON em um objeto
+            ConsultationRequestDTO consultationRequestDTO = objectMapper.readValue(message, ConsultationRequestDTO.class);
+            logger.info("Notificação enviada com sucesso: {}", consultationRequestDTO); // Log da consulta processada
 
-        // Log após enviar a notificação
-        logger.info("Notificação enviada com sucesso para a mensagem: {}", message);
+        } catch (JsonProcessingException e) {
+
+            // Tratar erro de processamento JSON
+            logger.error("Erro ao processar a mensagem JSON: {}", e.getMessage(), e); // Log do erro
+
+        } catch (Exception e) {
+            logger.error("Erro inesperado: {}", e.getMessage(), e);
+        }
     }
 
     public void sendEmail(String to, String subject, String text) {
