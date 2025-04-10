@@ -31,6 +31,7 @@ public class NotificationService {
 
         ObjectMapper objectMapper = new ObjectMapper();
 
+        logger.info("Tentando enviar notificações"+ message);
         try {
             // Tente converter a string JSON em um objeto
             ConsultationRequestDTO consultationRequestDTO = objectMapper.readValue(message, ConsultationRequestDTO.class);

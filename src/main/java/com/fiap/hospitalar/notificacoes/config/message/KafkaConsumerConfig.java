@@ -1,4 +1,4 @@
-package com.fiap.hospitalar.notificacoes.config.notification;
+package com.fiap.hospitalar.notificacoes.config.message;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.springframework.context.annotation.Bean;
